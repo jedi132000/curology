@@ -1,0 +1,30 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Message that will be displayed on users'' first issue'
+        pr-message: 'Message that will be displayed on users'' first pr'
+
+
+- name: OWASP ZAP Full Scan
+  uses: zaproxy/action-full-scan@v0.1.0
+  with:
+    # GitHub Token to create issues in the repository
+    token: # optional, default is ${{ github.token }}
+    # Target URL
+    target: 
+    # Relative path of the ZAP configuration file
+    rules_file_name: # optional
+    # The Docker file to be executed
+    docker_name: # default is owasp/zap2docker-stable
+    # Additional command line options
+    cmd_options: # optional
+    # The title for the GitHub issue to be created
+    issue_title: # optional, default is ZAP Full Scan Report
